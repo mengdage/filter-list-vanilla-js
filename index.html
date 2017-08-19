@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>List Filter Vanilla JS</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+</head>
+<body>
+  <div class="jumbotron">
+    <h1 class="display-3 text-center">My Contacts</h1>
+    <div class="input-group">
+      <input id="filterInput" class="form-control" type="text" placeholder="Search names...">
+    </div>
+    <ul class="contact-list list-group">
+      <li class="list-group-item list-group-item-dark">A</li>
+      <li class="contact-item list-group-item">
+        Aabu
+      </li>
+      <li class="contact-item list-group-item list-group-item-action">
+        Adam
+      </li>
+      <li class="contact-item list-group-item list-group-item-action">
+        Arteezy
+      </li>
+      <li class="list-group-item list-group-item-dark">B</li>
+      <li class="contact-item list-group-item list-group-item-action">Bkb</li>
+      <li class="contact-item list-group-item list-group-item-action">Bob</li>
+      <li class="list-group-item list-group-item-dark">C</li>
+      <li class="contact-item list-group-item list-group-item-action">Cat</li>
+      <li class="list-group-item list-group-item-dark">D</li>
+      <li class="contact-item list-group-item list-group-item-action">David</li>
+      <li class="contact-item list-group-item list-group-item-action">Diana</li>
+    </ul>
+
+  </div>
+
+  <script type="text/javascript">
+    (function(){
+      const filterInput = document.getElementById('filterInput');
+      filterInput.addEventListener('keyup', filterNames);
+
+      function filterNames() {
+        const filter = filterInput.value.toLowerCase();
+
+        // Get all contact-item lis
+        const contactLis = document.getElementsByClassName('contact-list')[0]
+                            .querySelectorAll('li.contact-item');
+        // Iterator through each li, if the name inside does not
+        // contain the filter keyword, hide the li
+        contactLis.forEach(li => {
+          if(li.textContent.toLowerCase().indexOf(filter) === -1) {
+            li.style.display = 'none';
+          } else {
+            li.style.display = '';
+          }
+        })
+
+
+      }
+
+    })();
+  </script>
+
+</body>
+</html>
